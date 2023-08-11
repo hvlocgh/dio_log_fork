@@ -1,35 +1,27 @@
 import 'package:flutter/material.dart';
 
-import 'dio_log.dart';
-
-///
-/// Created by rich on 2019-07-31
-///
+import 'gp_dio_log.dart';
 
 OverlayEntry? itemEntry;
 
-///显示全局悬浮调试按钮
-showDebugBtn(BuildContext context, {Widget? button, Color? btnColor}) async {
-  ///widget第一次渲染完成
-  try {
-    await Future.delayed(Duration(milliseconds: 500));
+showDebugBtn(BuildContext context, {Widget? button, Color? btnColor}) {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
     dismissDebugBtn();
     itemEntry = OverlayEntry(
         builder: (BuildContext context) =>
             button ?? DraggableButtonWidget(btnColor: btnColor));
 
-    ///显示悬浮menu
     Overlay.of(context)?.insert(itemEntry!);
-  } catch (e) {}
+  });
 }
 
-///关闭悬浮按钮
 dismissDebugBtn() {
-  itemEntry?.remove();
-  itemEntry = null;
+  try {
+    itemEntry?.remove();
+    itemEntry = null;
+  } catch (ex) {}
 }
 
-///悬浮按钮展示状态
 bool debugBtnIsShow() {
   return !(itemEntry == null);
 }
@@ -41,7 +33,7 @@ class DraggableButtonWidget extends StatefulWidget {
   final Color? btnColor;
 
   DraggableButtonWidget({
-    this.title = 'http log',
+    this.title = 'Show log',
     this.onTap,
     this.btnSize = 66,
     this.btnColor,
@@ -67,17 +59,17 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
 
-    ///默认点击事件
     var tap = () {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => HttpLogListWidget(),
+          builder: (context) =>
+              HttpLogListWidget(hint: "All http requests from dio"),
         ),
       );
     };
     Widget w;
-    Color primaryColor = widget.btnColor ?? Theme.of(context).primaryColor;
-    primaryColor = primaryColor.withOpacity(0.6);
+    Color primaryColor = widget.btnColor ?? Colors.redAccent;// Theme.of(context).primaryColor;
+    // primaryColor = primaryColor.withOpacity(0.6);
     w = GestureDetector(
       onTap: widget.onTap as void Function()? ?? tap,
       onPanUpdate: _dragUpdate,
@@ -100,13 +92,11 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
       ),
     );
 
-    ///圆形
     w = ClipRRect(
       borderRadius: BorderRadius.circular(widget.btnSize / 2),
       child: w,
     );
 
-    ///计算偏移量限制
     if (left < 1) {
       left = 1;
     }
