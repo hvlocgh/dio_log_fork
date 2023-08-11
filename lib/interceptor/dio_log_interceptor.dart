@@ -10,9 +10,6 @@ import '../dio_log_sds.dart';
 class SDSDioLogInterceptor implements Interceptor {
   LogPoolManager? logManage;
 
-  ///是否打印日志到控制台
-  static bool enablePrintLog = true;
-
   SDSDioLogInterceptor() {
     logManage = LogPoolManager.getInstance();
   }
@@ -61,15 +58,5 @@ class SDSDioLogInterceptor implements Interceptor {
     resOpt.data = response.data;
     resOpt.headers = response.headers.map;
     logManage?.onResponse(resOpt);
-    if (enablePrintLog) {
-      NetOptions logNp =
-          LogPoolManager.getInstance().logMap[resOpt.id.toString()]!;
-      log('request: url:${logNp.reqOptions?.url}');
-      log('request: method:${logNp.reqOptions?.method}');
-      log('request: params:${logNp.reqOptions?.params}');
-      log('request: data:${logNp.reqOptions?.data}');
-      log('request: duration:${getTimeStr1(logNp.reqOptions!.requestTime!)}');
-      log('response: ${toJson(logNp.resOptions?.data)}');
-    }
   }
 }

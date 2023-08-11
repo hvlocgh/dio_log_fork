@@ -111,6 +111,17 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
+                      copyClipboard(context, '${toJson(reqOpt.data)}');
+                    },
+                    child: Text('copy body'),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
                       copyClipboard(context, '${toJson(reqOpt.params)}');
                     },
                     child: Text('copy prams'),
