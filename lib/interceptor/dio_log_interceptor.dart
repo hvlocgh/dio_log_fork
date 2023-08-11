@@ -7,13 +7,13 @@ import 'dart:developer';
 import '../dio_log_sds.dart';
 
 ///log日志的处理类
-class DioLogInterceptor implements Interceptor {
+class SDSDioLogInterceptor implements Interceptor {
   LogPoolManager? logManage;
 
   ///是否打印日志到控制台
   static bool enablePrintLog = true;
 
-  DioLogInterceptor() {
+  SDSDioLogInterceptor() {
     logManage = LogPoolManager.getInstance();
   }
 

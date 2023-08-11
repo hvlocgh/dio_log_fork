@@ -4,8 +4,8 @@ import 'package:dio_log_sds/dio_log_sds.dart';
 Dio dio = Dio();
 
 initHttp() {
-  DioLogInterceptor.enablePrintLog = false;
-  dio.interceptors.add(DioLogInterceptor());
+  SDSDioLogInterceptor.enablePrintLog = false;
+  dio.interceptors.add(SDSDioLogInterceptor());
   // LogPoolManager.getInstance().isError = (res) => res.resOptions==null;
 }
 
