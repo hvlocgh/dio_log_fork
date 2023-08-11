@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:dio_log/bean/net_options.dart';
+import 'package:dio_log_sds/bean/net_options.dart';
 import 'package:flutter/material.dart';
 
-import '../dio_log.dart';
+import '../dio_log_sds.dart';
 
 class LogRequestWidget extends StatefulWidget {
   final NetOptions netOptions;
@@ -61,15 +61,62 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
               'Tip: long press a key to copy the value to the clipboard',
               style: TextStyle(fontSize: 10, color: Colors.red),
             ),
-            ElevatedButton(
-              onPressed: () {
-                copyClipboard(
-                    context,
-                    'url:${reqOpt.url}\nmethod:${reqOpt.method}\nrequestTime:$requestTime\nresponseTime:$responseTime\n'
-                    'duration:${resOpt?.duration ?? 0}ms\n${dataFormat(reqOpt.data)}'
-                    '\nparams:${toJson(reqOpt.params)}\nheader:${reqOpt.headers}');
-              },
-              child: Text('copy all'),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      copyClipboard(
+                          context,
+                          'url:${reqOpt.url}\nmethod:${reqOpt.method}\nrequestTime:$requestTime\nresponseTime:$responseTime\n'
+                          'duration:${resOpt?.duration ?? 0}ms\n${dataFormat(reqOpt.data)}'
+                          '\nparams:${toJson(reqOpt.params)}\nheader:${reqOpt.headers}');
+                    },
+                    child: Text('copy all'),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      copyClipboard(context, '${reqOpt.url}');
+                    },
+                    child: Text(
+                      'copy url',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      copyClipboard(context, '${reqOpt.headers}');
+                    },
+                    child: Text(
+                      'copy header',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      copyClipboard(context, '${toJson(reqOpt.params)}');
+                    },
+                    child: Text('copy prams'),
+                  ),
+                ),
+              ],
             ),
             _buildKeyValue('url', reqOpt.url),
             _buildKeyValue('method', reqOpt.method),
@@ -115,8 +162,8 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
   }
 
   ///默认的文本大小
-  Text _getDefText(String str) {
-    return Text(
+  Widget _getDefText(String str) {
+    return SelectableText(
       str,
       style: TextStyle(fontSize: 15),
     );

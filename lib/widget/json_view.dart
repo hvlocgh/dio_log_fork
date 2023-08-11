@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio_log/utils/copy_clipboard.dart';
+import 'package:dio_log_sds/utils/copy_clipboard.dart';
 import 'package:flutter/material.dart';
 
 ///
@@ -246,14 +246,13 @@ class _JsonViewState extends State<JsonView> {
   }
 
   ///默认的文本大小
-  Text _getDefText(String str) {
-    return Text(
+  Widget _getDefText(String str) {
+    return SelectableText(
       str,
       style: TextStyle(fontSize: widget.fontSize),
     );
   }
 
-  ///复制到手机粘贴板
   _copy(value) {
     copyClipboard(context, value);
   }

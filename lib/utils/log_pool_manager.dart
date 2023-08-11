@@ -1,9 +1,9 @@
 import 'dart:collection';
 
-import 'package:dio_log/bean/err_options.dart';
-import 'package:dio_log/bean/net_options.dart';
-import 'package:dio_log/bean/req_options.dart';
-import 'package:dio_log/bean/res_options.dart';
+import 'package:dio_log_sds/bean/err_options.dart';
+import 'package:dio_log_sds/bean/net_options.dart';
+import 'package:dio_log_sds/bean/req_options.dart';
+import 'package:dio_log_sds/bean/res_options.dart';
 
 ///log管理
 class LogPoolManager {

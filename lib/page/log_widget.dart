@@ -1,5 +1,5 @@
-import 'package:dio_log/bean/net_options.dart';
-import 'package:dio_log/dio_log.dart';
+import 'package:dio_log_sds/bean/net_options.dart';
+import 'package:dio_log_sds/dio_log_sds.dart';
 import 'package:flutter/material.dart';
 
 ///网络请求详情

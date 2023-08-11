@@ -1,10 +1,10 @@
 import 'dart:collection';
 
+import 'package:dio_log_sds/theme/style.dart';
 import 'package:flutter/material.dart';
-import 'package:gp_dio_log/theme/style.dart';
 
 import 'bean/net_options.dart';
-import 'gp_dio_log.dart';
+import 'dio_log_sds.dart';
 import 'page/log_widget.dart';
 
 class HttpLogListWidget extends StatefulWidget {
@@ -29,8 +29,8 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    logMap = LogPoolManager.getInstance()!.logMap;
-    keys = LogPoolManager.getInstance()!.keys;
+    logMap = LogPoolManager.getInstance().logMap;
+    keys = LogPoolManager.getInstance().keys;
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -107,7 +107,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
   }
 
   void _clearLog() {
-    LogPoolManager.getInstance()!.clear();
+    LogPoolManager.getInstance().clear();
     setState(() {});
   }
 }
