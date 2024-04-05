@@ -14,11 +14,6 @@ class LogWidget extends StatefulWidget {
 
 class _LogWidgetState extends State<LogWidget>
     with SingleTickerProviderStateMixin {
-  final List<Tab> tabs = <Tab>[
-    new Tab(text: "request"),
-    new Tab(text: "response"),
-  ];
-
   PageController? _pageController;
 
   int currentIndex = 0;

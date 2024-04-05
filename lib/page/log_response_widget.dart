@@ -20,8 +20,7 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
     super.build(context);
     var response = widget.netOptions.resOptions;
     var json = response?.data ?? 'no response';
-    return SingleChildScrollView(
-        child: Column(
+    return Column(
       children: <Widget>[
         Row(
           children: <Widget>[
@@ -48,17 +47,25 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
             ),
           ],
         ),
-        Text(
-          'Tip: long press a key to copy the value to the clipboard',
-          style: TextStyle(
-            fontSize: 10,
-            color: Colors.red,
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  'Tip: long press a key to copy the value to the clipboard',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.red,
+                  ),
+                ),
+                _buildJsonView('headers:', response?.headers),
+                _buildJsonView('response.data:', json),
+              ],
+            ),
           ),
         ),
-        _buildJsonView('headers:', response?.headers),
-        _buildJsonView('response.data:', json),
       ],
-    ));
+    );
   }
 
   ///构建json树的展示

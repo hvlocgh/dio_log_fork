@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Style {
   static TextStyle defText = TextStyle(
-    fontSize: 14,
+    fontSize: 18,
     color: Colors.black,
   );
   static TextStyle defTextBold = TextStyle(
-    fontSize: 14,
+    fontSize: 18,
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );

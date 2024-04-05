@@ -49,7 +49,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: Align(
                 child: Text(
-                  debugBtnIsShow() ? 'close overlay' : 'open overlay',
+                  debugBtnIsShow() ? 'Close overlay' : 'Open overlay',
                   style: theme.textTheme.caption!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
@@ -62,7 +62,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: Align(
                 child: Text(
-                  'clear',
+                  'Clear',
                   style: theme.textTheme.caption!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
@@ -72,7 +72,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
         ],
       ),
       body: logMap!.length < 1
-          ? Center(child: Text('no request log'))
+          ? Center(child: Text('No request log'))
           : Column(
               children: [
                 if (widget.hint != null && widget.hint!.isNotEmpty)
@@ -145,7 +145,7 @@ class _LogItem extends StatelessWidget {
               Text('${reqOpt.url}', style: Style.defText),
               const SizedBox(height: 8),
               Text(
-                '${resOpt?.statusCode}',
+                '${reqOpt.method}: ${resOpt?.statusCode}',
                 style: Style.defTextBold.copyWith(
                   color: (resOpt?.statusCode ?? 0) == 200
                       ? Colors.green

@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_log_sds/bean/err_options.dart';
-import 'package:dio_log_sds/bean/net_options.dart';
 import 'package:dio_log_sds/bean/req_options.dart';
 import 'package:dio_log_sds/bean/res_options.dart';
-import 'dart:developer';
 import '../dio_log_sds.dart';
 
 ///log日志的处理类

@@ -8,5 +8,5 @@ initHttp() {
 }
 
 httpGet(String url) {
-  dio.get(url);
+  dio.get(url, queryParameters: {"param": "Check pram"});
 }

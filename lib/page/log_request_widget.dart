@@ -17,26 +17,15 @@ class LogRequestWidget extends StatefulWidget {
 
 class _LogRequestWidgetState extends State<LogRequestWidget>
     with AutomaticKeepAliveClientMixin {
-  late TextEditingController _urlController;
-  late TextEditingController _cookieController;
-  late TextEditingController _paramController;
-  late TextEditingController _bodyController;
   bool reqFail = false;
+  double fontSize = 14;
   @override
   void initState() {
-    _urlController = TextEditingController();
-    _cookieController = TextEditingController();
-    _paramController = TextEditingController();
-    _bodyController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _bodyController.dispose();
-    _paramController.dispose();
-    _urlController.dispose();
-    _cookieController.dispose();
     super.dispose();
   }
 
@@ -57,6 +46,23 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Row(
+              children: <Widget>[
+                SizedBox(width: 10),
+                Text('Slider Fontsize'),
+                Expanded(
+                  child: Slider(
+                    value: fontSize,
+                    max: 30,
+                    min: 1,
+                    onChanged: (v) {
+                      fontSize = v;
+                      setState(() {});
+                    },
+                  ),
+                ),
+              ],
+            ),
             Text(
               'Tip: long press a key to copy the value to the clipboard',
               style: TextStyle(fontSize: 10, color: Colors.red),
@@ -124,7 +130,7 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
                     onPressed: () {
                       copyClipboard(context, '${toJson(reqOpt.params)}');
                     },
-                    child: Text('copy prams'),
+                    child: Text('copy params'),
                   ),
                 ),
               ],
@@ -149,7 +155,10 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _getDefText('$key:'),
-        JsonView(json: json),
+        JsonView(
+          json: json,
+          fontSize: fontSize,
+        ),
       ],
     );
   }
@@ -174,9 +183,9 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
 
   ///默认的文本大小
   Widget _getDefText(String str) {
-    return SelectableText(
+    return Text(
       str,
-      style: TextStyle(fontSize: 15),
+      style: TextStyle(fontSize: fontSize),
     );
   }
 

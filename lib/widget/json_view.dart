@@ -184,10 +184,10 @@ class _JsonViewState extends State<JsonView> {
             angle: _isShow(key) ? 0 : 3.14 * 1.5,
             child: Icon(
               Icons.expand_more,
-              size: 12,
+              size: widget.fontSize,
             ),
           ),
-          keyW,
+          Expanded(child: keyW),
         ],
       ),
     );
@@ -247,7 +247,7 @@ class _JsonViewState extends State<JsonView> {
 
   ///默认的文本大小
   Widget _getDefText(String str) {
-    return SelectableText(
+    return Text(
       str,
       style: TextStyle(fontSize: widget.fontSize),
     );
