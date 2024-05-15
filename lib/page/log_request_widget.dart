@@ -194,7 +194,7 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
 
   Map? formDataMap;
   Widget _buildParam(dynamic data) {
-    if (data is Map) {
+    if (data is Map || data is List) {
       return _buildJsonView('body', data);
     } else if (data is FormData) {
       formDataMap = Map()
