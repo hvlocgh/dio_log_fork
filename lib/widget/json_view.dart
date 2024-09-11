@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio_log_sds/utils/copy_clipboard.dart';
+import 'package:dio_log_fork/utils/copy_clipboard.dart';
 import 'package:flutter/material.dart';
 
 ///

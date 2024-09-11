@@ -1,12 +1,12 @@
-import 'package:dio_log_sds/dio_log_sds.dart';
+import 'package:dio_log_fork/dio_log_fork.dart';
 import 'package:flutter/material.dart';
 
 import 'http_utils.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();

@@ -1,6 +1,6 @@
-library dio_log_sds;
+library dio_log_fork;
 
-export 'package:dio_log_sds/widget/json_view.dart';
+export 'package:dio_log_fork/widget/json_view.dart';
 
 export 'http_log_list_widget.dart';
 export 'interceptor/dio_log_interceptor.dart';

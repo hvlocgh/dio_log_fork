@@ -1,10 +1,10 @@
 import 'dart:collection';
 
-import 'package:dio_log_sds/theme/style.dart';
+import 'package:dio_log_fork/theme/style.dart';
 import 'package:flutter/material.dart';
 
 import 'bean/net_options.dart';
-import 'dio_log_sds.dart';
+import 'dio_log_fork.dart';
 import 'page/log_widget.dart';
 
 class HttpLogListWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
 
-# sds_dio_log
+# dio_log_fork
 ## Added curl
 #### HTTP Inspector tool for Dart which can debugging http requests，Currently, DIO based HTTP capture is implemented
 #### Of course, you can implement an Interceptor instead of a DiologInterceptor to adapt to other HTTP clients
@@ -8,18 +8,18 @@
 ### Add dependency
 ```
 dependencies: 
-  dio_log_sds : ^5.0.0
+  dio_log_fork : ^5.0.0
 ```
-### [github](https://github.com/HVLoc/dio_log_sds)
+### [github](https://github.com/hvlocgh/dio_log_fork)
 ```
-  dio_log_sds:
+  dio_log_fork:
     git:
-      url: https://github.com/HVLoc/dio_log_sds
+      url: https://github.com/hvlocgh/dio_log_fork
       ref: master
 ```
 ### set interceptor of dio
 ```
-dio.interceptors.add(SDSDioLogInterceptor());
+dio.interceptors.add(DioLogForkInterceptor());
 ```
 ### Add a global hover button on your home page to jump through the log list
 ```

@@ -1,5 +1,5 @@
-import 'package:dio_log_sds/bean/net_options.dart';
-import 'package:dio_log_sds/dio_log_sds.dart';
+import 'package:dio_log_fork/bean/net_options.dart';
+import 'package:dio_log_fork/dio_log_fork.dart';
 import 'package:flutter/material.dart';
 
 class LogResponseWidget extends StatefulWidget {

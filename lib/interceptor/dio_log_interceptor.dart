@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:dio_log_sds/bean/err_options.dart';
-import 'package:dio_log_sds/bean/req_options.dart';
-import 'package:dio_log_sds/bean/res_options.dart';
-import '../dio_log_sds.dart';
+import 'package:dio_log_fork/bean/err_options.dart';
+import 'package:dio_log_fork/bean/req_options.dart';
+import 'package:dio_log_fork/bean/res_options.dart';
+import '../dio_log_fork.dart';
 
 ///log日志的处理类
-class SDSDioLogInterceptor implements Interceptor {
+class DioLogForkInterceptor implements Interceptor {
   LogPoolManager? logManage;
 
-  SDSDioLogInterceptor() {
+  DioLogForkInterceptor.DioLogForkInterceptor() {
     logManage = LogPoolManager.getInstance();
   }
 
