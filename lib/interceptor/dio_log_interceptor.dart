@@ -8,7 +8,7 @@ import '../dio_log_fork.dart';
 class DioLogForkInterceptor implements Interceptor {
   LogPoolManager? logManage;
 
-  DioLogForkInterceptor.DioLogForkInterceptor() {
+  DioLogForkInterceptor() {
     logManage = LogPoolManager.getInstance();
   }
 
